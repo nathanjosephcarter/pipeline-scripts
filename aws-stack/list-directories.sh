@@ -1,9 +1,13 @@
 #!/bin/bash
 
-# Source the output functions file
-echo $PWD
-echo $(cd ../ && pwd)
+ls
+echo ""
+ls ..
+echo ""
+ls ../..
+echo ""
 
+# Source the output functions file
 source "../pipeline-scripts/github/set_multiline_github_output.sh"
 
 # Capture the list of directories
