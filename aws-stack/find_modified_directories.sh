@@ -1,11 +1,7 @@
 #!/bin/bash
 
-# Retrieve the directories from the previous step
-directories="${{ steps.list-directories.outputs.directories }}"
-
 changed_directories=()
 
-target_branch="${{ github.base_ref }}"
 git fetch origin $target_branch
 
 for dir in $directories; do
