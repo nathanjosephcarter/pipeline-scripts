@@ -2,7 +2,8 @@
 
 git fetch origin $target_branch
 
-mapfile -t directories <<< "$directories"
+mapfile -t array <<< "$directories"
+echo $array
 
 changed_directories=()
 for dir in $directories; do
