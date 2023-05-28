@@ -36,5 +36,5 @@ for dir in "${unchanged_directories[@]}"; do
   echo "$dir"
 done
 
-# Set the modified directories as a multiline output
-set_multiline_github_output -n "modified_directories" -v "$modified_directories"
+array_string="${modified_directories[*]}"
+echo "modified_directories=$array_string" >> "$GITHUB_OUTPUT"

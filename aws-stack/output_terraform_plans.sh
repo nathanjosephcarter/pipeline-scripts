@@ -3,8 +3,7 @@
 # Create the plan_outputs directory (if it doesn't exist)
 mkdir -p plan_outputs
 
-# Read the multiline value of DIRECTORIES into an array
-IFS=$'\n' read -r -d '' -a modified_directories <<< "$MODIFIED_DIRECTORIES"
+read -r -a my_array <<< "$MODIFIED_DIRECTORIES"
 
 # Iterate over each directory in the DIRECTORIES variable
 for dir in "${modified_directories[@]}"; do
@@ -14,6 +13,7 @@ for dir in "${modified_directories[@]}"; do
   mkdir -p "../plan_outputs/$(dirname "$dir")"
 
   # Initialize Terraform in the current directory
+  echo "Initialising plan for $dir"
   terraform init
 
   # Perform Terraform plan and save the output to the plan_outputs directory
