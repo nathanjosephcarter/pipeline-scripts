@@ -3,7 +3,7 @@
 # Create the plan_outputs directory (if it doesn't exist)
 mkdir -p plan_outputs
 
-read -r -a my_array <<< "$MODIFIED_DIRECTORIES"
+read -r -a modified_directories <<< "$MODIFIED_DIRECTORIES"
 
 # Iterate over each directory in the DIRECTORIES variable
 for dir in "${modified_directories[@]}"; do
