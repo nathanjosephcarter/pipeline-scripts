@@ -2,11 +2,9 @@
 
 git fetch origin $target_branch
 
-mapfile -t array <<< "$directories"
-echo $array
-
 changed_directories=()
-for dir in $directories; do
+while IFS= read -r dir; do
+  echo $dir
   git_diff_output=$(git diff origin/$target_branch --name-only -- "$dir")
   if [[ -n "$git_diff_output" ]]; then
     echo "File changes detected in $dir."
@@ -14,4 +12,4 @@ for dir in $directories; do
   else
     echo "No file changes detected in $dir."
   fi
-done
+done <<< "$string"
