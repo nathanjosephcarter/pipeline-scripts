@@ -1,9 +1,14 @@
 #!/bin/bash
 
+echo "DIRECTORIES"
+echo $DIRECTORIES
+
 # Read the multiline value of DIRECTORIES into an array
 IFS=$'\n' read -r -d '' -a directories <<< "$DIRECTORIES"
 
 for dir in "${directories[@]}"; do
+  echo "dir"
+  echo $dir
   # Get the previous comment ID for the directory (if exists)
   comment_id=$(gh pr view $EVENT_NUMBER --json "comments,body,id" -q ".comments[] | select(.body | startswith(\"Terraform Plan Output - $dir\")) | .id")
   echo "Previous comment ID for $dir: $comment_id"

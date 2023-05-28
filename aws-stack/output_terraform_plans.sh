@@ -16,7 +16,7 @@ for dir in "${directories[@]}"; do
   mkdir -p "../plan_outputs/$(dirname "$dir")"
 
   # Initialize Terraform in the current directory
-  echo "Initialising plan for $dir"
+  echo "Planning $dir"
   terraform init
 
   # Perform Terraform plan and save the output to the plan_outputs directory
