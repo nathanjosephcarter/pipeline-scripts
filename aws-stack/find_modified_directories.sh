@@ -6,6 +6,7 @@ git fetch origin $target_branch
 
 modified_directories=()
 for dir in "${directories[@]}"; do
+  echo $dir
   git_diff_output=$(git diff $target_branch --name-only -- $dir)
   if [[ -n "$git_diff_output" ]]; then
     echo "File changes detected in $dir."
