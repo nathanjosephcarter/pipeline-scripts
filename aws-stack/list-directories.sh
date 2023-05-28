@@ -1,14 +1,10 @@
 #!/bin/bash
 
-ls
-echo ""
-ls ..
-echo ""
-ls ../..
+ls ./pipeline-scripts
 echo ""
 
 # Source the output functions file
-source "../pipeline-scripts/github/set_multiline_github_output.sh"
+source "./pipeline-scripts/github/set_multiline_github_output.sh"
 
 # Capture the list of directories
 directories=$(find . -type d -not -path '*/\.*' -not -path '.' -not -path './.git*' -not -path './pipeline-scripts*' -mindepth 2 -maxdepth 2)
