@@ -2,8 +2,9 @@
 
 # Source the output functions file
 echo $PWD
+echo $(cd ../ && pwd)
 
-source "../github/set_multiline_github_output.sh"
+source "../pipeline-scripts/github/set_multiline_github_output.sh"
 
 # Capture the list of directories
 directories=$(find . -type d -not -path '*/\.*' -not -path '.' -not -path './.git*' -not -path './pipeline-scripts*' -mindepth 2 -maxdepth 2)
