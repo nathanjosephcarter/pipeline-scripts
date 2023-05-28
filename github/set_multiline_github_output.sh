@@ -11,7 +11,7 @@ set_multiline_github_output() {
     esac
   done
 
-  echo "${output_name_variable}<<EOF" >> $GITHUB_OUTPUT
-  echo "${output_value_variable}" >> $GITHUB_OUTPUT
+  echo "$output_name_variable<<EOF" >> $GITHUB_OUTPUT
+  echo $output_value_variable >> $GITHUB_OUTPUT
   echo 'EOF' >> $GITHUB_OUTPUT
 }
