@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Source the output functions file
-ls -l "../github/set_multiline_github_output.sh"
+echo $PWD
+
 source "../github/set_multiline_github_output.sh"
 
 # Capture the list of directories
