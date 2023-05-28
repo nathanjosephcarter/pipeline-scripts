@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "DIRECTORIES"
-echo $DIRECTORIES
+# Set IFS to a space character
+IFS=' '
 
-# Read the multiline value of DIRECTORIES into an array
-IFS=$'\n' read -r -d '' -a directories <<< "$DIRECTORIES"
+# Split the space-separated string into an array
+directories=($DIRECTORIES)
 
 for dir in "${directories[@]}"; do
   echo "dir"
