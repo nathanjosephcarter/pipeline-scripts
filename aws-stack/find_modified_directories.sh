@@ -7,7 +7,7 @@ source "./pipeline-scripts/github/set_multiline_github_output.sh"
 IFS=$'\n' read -r -d '' -a directories <<< "$DIRECTORIES"
 
 # Fetch the target branch
-git fetch origin "$TARGET_BRANCH"
+git fetch origin "$TARGET_BRANCH" > /dev/null 2>&1
 
 # Initialize arrays to store modified and unchanged directories
 modified_directories=()
@@ -18,10 +18,8 @@ for dir in "${directories[@]}"; do
   # Check for file changes in the directory
   git_diff_output=$(git diff "origin/$TARGET_BRANCH" --name-only -- "$dir")
   if [[ -n "$git_diff_output" ]]; then
-    echo "File changes detected in $dir."
     modified_directories+=("$dir")
   else
-    echo "No file changes detected in $dir."
     unchanged_directories+=("$dir")
   fi
 done
