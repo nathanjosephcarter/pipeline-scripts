@@ -5,6 +5,9 @@ mkdir -p plan_outputs
 
 read -r -a modified_directories <<< "$MODIFIED_DIRECTORIES"
 
+# Store the current working directory
+original_dir=$PWD
+
 # Iterate over each directory in the DIRECTORIES variable
 for dir in "${modified_directories[@]}"; do
   cd "$dir" # Change to the directory
@@ -26,5 +29,7 @@ for dir in "${modified_directories[@]}"; do
   echo "Writing plan file $output_path"
   terraform plan -out "$output_path"
 
-  cd .. # Change back to the previous directory
+  # Change back to the previous directory
+  echo "Changing back to the previous directory: $original_dir"
+  cd "$original_dir"
 done
