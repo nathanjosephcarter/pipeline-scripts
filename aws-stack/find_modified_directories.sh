@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Source the output functions file
-source "./pipeline-scripts/github/set_multiline_github_output.sh"
-
 # Read the multiline value of DIRECTORIES into an array
 IFS=$'\n' read -r -d '' -a directories <<< "$DIRECTORIES"
 
