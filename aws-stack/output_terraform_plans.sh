@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Source the sanitise directory name file
+source "./pipeline-scripts/aws-stack/sanitise_directory_name.sh"
+
 # Create the plan_outputs directory (if it doesn't exist)
 mkdir -p plan_outputs
 
@@ -19,10 +22,8 @@ for dir in "${directories[@]}"; do
   echo "Planning $dir"
   terraform init
 
-  # Perform Terraform plan and save the output to the plan_outputs directory
-  sanitized_dir="${dir#./}" # Remove leading ./ from directory name
-  sanitized_dir="${sanitized_dir//\//-}" # Replace slashes with dashes in directory name
-  output_path="../plan_outputs/$sanitized_dir.tfplan"
+  file_name=$(sanitise_directory_name -d "$directory")
+  output_path="../plan_outputs/$file_name.tfplan"
   echo "Writing plan file $output_path"
   terraform plan -out "$output_path"
 
