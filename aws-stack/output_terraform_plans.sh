@@ -3,17 +3,14 @@
 # Create the plan_outputs directory (if it doesn't exist)
 mkdir -p plan_outputs
 
-read -r -a modified_directories <<< "$MODIFIED_DIRECTORIES"
+read -r -a directories <<< "$DIRECTORIES"
 
 # Store the current working directory
 original_dir=$PWD
 
 # Iterate over each directory in the DIRECTORIES variable
-for dir in "${modified_directories[@]}"; do
+for dir in "${directories[@]}"; do
   cd "$dir" # Change to the directory
-  echo "Current working directory: $PWD"
-  ls
-  ls -al "$dir" # Debug output - list directory contents
 
   # Create the parent directories for the plan output file
   mkdir -p "../plan_outputs/$(dirname "$dir")"
@@ -30,6 +27,5 @@ for dir in "${modified_directories[@]}"; do
   terraform plan -out "$output_path"
 
   # Change back to the previous directory
-  echo "Changing back to the previous directory: $original_dir"
   cd "$original_dir"
 done
