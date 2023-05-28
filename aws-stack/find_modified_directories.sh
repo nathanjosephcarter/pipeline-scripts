@@ -9,8 +9,9 @@ IFS=$'\n' read -r -d '' -a directories <<< "$DIRECTORIES"
 # Fetch the target branch
 git fetch origin "$TARGET_BRANCH"
 
-# Initialize an array to store modified directories
+# Initialize arrays to store modified and unchanged directories
 modified_directories=()
+unchanged_directories=()
 
 # Iterate over each directory
 for dir in "${directories[@]}"; do
@@ -21,7 +22,20 @@ for dir in "${directories[@]}"; do
     modified_directories+=("$dir")
   else
     echo "No file changes detected in $dir."
+    unchanged_directories+=("$dir")
   fi
+done
+
+# Print the modified directories
+echo "Modified Directories:"
+for dir in "${modified_directories[@]}"; do
+  echo "$dir"
+done
+
+# Print the unchanged directories
+echo "Unchanged Directories:"
+for dir in "${unchanged_directories[@]}"; do
+  echo "$dir"
 done
 
 # Set the modified directories as a multiline output
