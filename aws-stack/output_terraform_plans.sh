@@ -7,7 +7,6 @@ mkdir -p plan_outputs
 IFS=$'\n' read -r -d '' -a modified_directories <<< "$MODIFIED_DIRECTORIES"
 
 # Iterate over each directory in the DIRECTORIES variable
-
 for dir in "${modified_directories[@]}"; do
   cd "$dir" # Change to the directory
 
@@ -18,8 +17,8 @@ for dir in "${modified_directories[@]}"; do
   terraform init
 
   # Perform Terraform plan and save the output to the plan_outputs directory
-  sanitized_dir="${dir//\//-}" # Remove slashes from directory name
-  sanitized_dir="${sanitized_dir#.}" # Remove leading dot from directory name
+  sanitized_dir="${dir#./}" # Remove leading ./ from directory name
+  sanitized_dir="${sanitized_dir//\//-}" # Replace slashes with dashes in directory name
   output_path="../plan_outputs/$sanitized_dir.tfplan"
   echo "Writing plan file $output_path"
   terraform plan -out "$output_path"
