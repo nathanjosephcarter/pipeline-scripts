@@ -17,7 +17,9 @@ for dir in $DIRECTORIES; do
   terraform init
 
   # Perform Terraform plan and save the output to the plan_outputs directory
-  terraform plan -out "../plan_outputs/${dir//\//-}.tfplan"
+  output_path="../plan_outputs/${dir//\//-}.tfplan"
+  echo "Writing plan file $output_path"
+  terraform plan -out "$output_path"
 
   cd .. # Change back to the previous directory
 done
