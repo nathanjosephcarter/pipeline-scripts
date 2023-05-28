@@ -10,4 +10,4 @@ directories=$(find . -type d -not -path '*/\.*' -not -path '.' -not -path './.gi
 echo $directories
 
 # Call the function to set the multiline output
-set_multiline_github_output -name "directories" -value "$directories"
+set_multiline_github_output -n "directories" -v $directories
