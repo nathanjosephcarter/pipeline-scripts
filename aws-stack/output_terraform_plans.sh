@@ -8,6 +8,7 @@ read -r -a modified_directories <<< "$MODIFIED_DIRECTORIES"
 # Iterate over each directory in the DIRECTORIES variable
 for dir in "${modified_directories[@]}"; do
   cd "$dir" # Change to the directory
+  ls -al "$dir" # Debug output - list directory contents
 
   # Create the parent directories for the plan output file
   mkdir -p "../plan_outputs/$(dirname "$dir")"
