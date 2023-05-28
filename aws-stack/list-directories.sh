@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls ./pipeline-scripts
+ls ./pipeline-scripts/github
 echo ""
 
 # Source the output functions file
