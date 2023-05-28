@@ -7,7 +7,7 @@ mkdir -p plan_outputs
 IFS=$'\n'
 
 # Iterate over each directory in the DIRECTORIES variable
-for dir in $DIRECTORIES; do
+for dir in $MODIFIED_DIRECTORIES; do
   cd "$dir" # Change to the directory
 
   # Create the parent directories for the plan output file
