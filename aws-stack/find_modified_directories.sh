@@ -7,7 +7,7 @@ source "./pipeline-scripts/github/set_multiline_github_output.sh"
 IFS=$'\n' read -r -d '' -a directories <<< "$DIRECTORIES"
 
 # Fetch the target branch
-git fetch origin "$TARGET_BRANCH" > /dev/null 2>&1
+git fetch origin "$TARGET_BRANCH"
 
 # Initialize arrays to store modified and unchanged directories
 modified_directories=()
