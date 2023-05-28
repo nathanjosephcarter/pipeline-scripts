@@ -22,7 +22,7 @@ for dir in "${directories[@]}"; do
   echo "Planning $dir"
   terraform init
 
-  file_name=$(sanitise_directory_name -d "$directory")
+  file_name=$(sanitise_directory_name -d "$dir")
   output_path="../plan_outputs/$file_name.tfplan"
   echo "Writing plan file $output_path"
   terraform plan -out "$output_path"
