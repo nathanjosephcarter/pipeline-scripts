@@ -1,9 +1,10 @@
 #!/bin/bash
 
-changed_directories=()
-
 git fetch origin $target_branch
 
+mapfile -t directories <<< "$directories"
+
+changed_directories=()
 for dir in $directories; do
   git_diff_output=$(git diff origin/$target_branch --name-only -- "$dir")
   if [[ -n "$git_diff_output" ]]; then
