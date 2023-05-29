@@ -7,7 +7,12 @@ source "./pipeline-scripts/aws-stack/sanitise_directory_name.sh"
 IFS=' '
 
 # Debug
-ls ../..
+echo "ls ."
+ls .
+
+echo "ls .."
+ls ..
+
 
 # Split the space-separated string into an array
 directories=($DIRECTORIES)
