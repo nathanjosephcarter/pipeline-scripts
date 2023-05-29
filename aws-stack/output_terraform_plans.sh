@@ -11,21 +11,21 @@ read -r -a directories <<< "$DIRECTORIES"
 # Store the current working directory
 original_dir=$PWD
 
+
+mkdir -p "../plan-outputs"
+
 # Iterate over each directory in the DIRECTORIES variable
 for dir in "${directories[@]}"; do
   cd "$dir" # Change to the directory
 
-  # Initialise Terraform in the current directory
   echo "Planning $dir"
   terraform init
 
+  # Initialise Terraform in the current directory
   file_name=$(sanitise_directory_name -d "$dir")
   output_path="../plan-outputs/$file_name.tfplan"
   echo "Writing plan file $output_path"
   terraform plan -out "$output_path"
-
-  echo "ls plan outputs"
-  ls "../plan-outputs/"
 
   # Change back to the previous directory
   cd "$original_dir"
