@@ -6,11 +6,6 @@ source "./pipeline-scripts/aws-stack/sanitise_directory_name.sh"
 # Create the plan_outputs directory (if it doesn't exist)
 mkdir -p plan-outputs
 
-echo "ls ."
-ls .
-echo "ls .."
-ls ..
-
 read -r -a directories <<< "$DIRECTORIES"
 
 # Store the current working directory
@@ -25,10 +20,12 @@ for dir in "${directories[@]}"; do
 
   # Initialise Terraform in the current directory
   file_name=$(sanitise_directory_name -d "$dir")
-  output_path="../plan-outputs/$file_name.tfplan"
+  output_path="./plan-outputs/$file_name.tfplan"
   echo "Writing plan file $output_path"
   terraform plan -out "$output_path"
 
   # Change back to the previous directory
   cd "$original_dir"
 done
+
+ls ./plan-outputs
