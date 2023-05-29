@@ -24,6 +24,8 @@ delete_pr_comment() {
     exit 1
   fi
 
+  echo $output_comment_variable
+
   gh api \
     --method DELETE \
     -H "Accept: application/vnd.github+json" \
