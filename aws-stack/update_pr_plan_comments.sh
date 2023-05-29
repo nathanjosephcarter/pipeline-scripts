@@ -11,7 +11,7 @@ directories=($DIRECTORIES)
 
 for dir in "${directories[@]}"; do
   # Get the new plan output
-  file_name=$(sanitise_directory_name -d "$directory")
+  file_name=$(sanitise_directory_name -d "$dir")
   output_path="./plan_outputs/$file_name.tfplan"
   new_plan_output=$(cat "$output_path")
 
