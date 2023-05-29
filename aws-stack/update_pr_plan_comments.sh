@@ -12,7 +12,7 @@ directories=($DIRECTORIES)
 for dir in "${directories[@]}"; do
   # Get the new plan output
   file_name=$(sanitise_directory_name -d "$directory")
-  output_path="../plan_outputs/$file_name.tfplan"
+  output_path="./plan_outputs/$file_name.tfplan"
   new_plan_output=$(cat "$output_path")
 
   # Get the previous comment ID for the directory (if exists)
@@ -21,7 +21,7 @@ for dir in "${directories[@]}"; do
 
   # Check if the new plan is different from the previous one
   if [[ -n "$comment_id" ]]; then
-    previous_plan_output=$(gh pr view ${{ github.event.number }} --json "comments,body" -q ".comments[] | select(.id == \"$comment_id\") | .body" | sed 's/^Terraform Plan Output - $dir\n//')
+    previous_plan_output=$(gh pr view $EVENT_NUMBER --json "comments,body" -q ".comments[] | select(.id == \"$comment_id\") | .body" | sed 's/^Terraform Plan Output - $dir\n//')
     if [[ "$new_plan_output" != "$previous_plan_output" ]]; then
       # Delete the previous comment
       gh pr comment --delete $comment_id
