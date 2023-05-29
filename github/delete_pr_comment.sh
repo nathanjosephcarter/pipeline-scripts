@@ -24,12 +24,14 @@ delete_pr_comment() {
     exit 1
   fi
 
-  echo $output_comment_variable
+  endpoint="/repos/nathanjosephcarter/$output_repo_variable/pulls/comments/$output_comment_variable"
+  echo "Endpoint:"
+  echo $endpoint
 
   gh api \
     --method DELETE \
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    /repos/nathanjosephcarter/$output_repo_variable/pulls/comments/$output_comment_variable
+    $endpoint
 }
 
