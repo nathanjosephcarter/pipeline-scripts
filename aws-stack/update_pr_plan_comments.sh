@@ -6,6 +6,9 @@ source "./pipeline-scripts/aws-stack/sanitise_directory_name.sh"
 # Set IFS to a space character
 IFS=' '
 
+# Debug
+ls ..
+
 # Split the space-separated string into an array
 directories=($DIRECTORIES)
 
