@@ -1,4 +1,4 @@
-list_reviews_endpoint="/repos/nathanjosephcarter/$REPO_NAME/pulls/$PULL_NUMBER/reviews"
+list_reviews_endpoint="/repos/$REPO_NAME/pulls/$PULL_NUMBER/reviews"
 echo $list_reviews_endpoint
 reviews=$(gh api \
   -H "Accept: application/vnd.github+json" \
