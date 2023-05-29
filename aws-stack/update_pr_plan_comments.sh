@@ -7,6 +7,7 @@ source "./pipeline-scripts/aws-stack/sanitise_directory_name.sh"
 source "./pipeline-scripts/github/delete_pr_comment.sh"
 
 #Debug
+ls 
 ls ./plan_outputs
 
 # Set IFS to a space character
