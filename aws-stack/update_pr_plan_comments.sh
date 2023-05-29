@@ -6,10 +6,6 @@ source "./pipeline-scripts/aws-stack/sanitise_directory_name.sh"
 # Source the delete pr comment file
 source "./pipeline-scripts/github/delete_pr_comment.sh"
 
-#Debug
-ls 
-ls ./plan_outputs
-
 # Set IFS to a space character
 IFS=' '
 
@@ -19,7 +15,7 @@ directories=($DIRECTORIES)
 for dir in "${directories[@]}"; do
   # Get the new plan output
   file_name=$(sanitise_directory_name -d "$dir")
-  output_path="./plan_outputs/$file_name.tfplan"
+  output_path="./plan-outputs/$file_name.tfplan"
   new_plan_output=$(cat "$output_path")
 
   # Get the previous comment ID for the directory (if exists)
