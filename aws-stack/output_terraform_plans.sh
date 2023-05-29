@@ -20,7 +20,7 @@ for dir in "${directories[@]}"; do
 
   # Initialise Terraform in the current directory
   file_name=$(sanitise_directory_name -d "$dir")
-  output_path="./plan-outputs/$file_name.tfplan"
+  output_path="../../plan-outputs/$file_name.tfplan"
   echo "Writing plan file $output_path"
   terraform plan -out "$output_path"
 
