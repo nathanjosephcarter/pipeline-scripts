@@ -13,7 +13,6 @@ delete_pr_comment() {
       \?) echo "Error: Invalid option -$OPTARG." >&2 ; exit 1 ;;
     esac
   done
-  done
 
   if [[ -z $output_repo_variable ]]; then
     echo "Error: Repo must not be empty." >&2
