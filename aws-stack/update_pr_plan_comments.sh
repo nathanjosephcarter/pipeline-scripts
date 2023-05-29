@@ -31,6 +31,7 @@ for dir in "${directories[@]}"; do
 
     # Iterate over the sorted comment IDs
     for id in ${sorted_comment_ids[@]}; do
+      echo $id
       # Skip the most recent comment ID
       if [[ $id != $most_recent_comment_id ]]; then
         # Delete the previous comment
