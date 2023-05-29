@@ -20,5 +20,5 @@ sanitise_directory_name() {
   sanitised_dir="${output_directory_variable#./}" # Remove leading ./ from directory name
   sanitised_dir="${sanitised_dir//\//-}" # Replace slashes with dashes in directory name
 
-  echo "$sanitised_dir" # Output the sanitized directory string
+  echo "$sanitised_dir" # Output the sanitised directory string
 }

@@ -15,10 +15,7 @@ original_dir=$PWD
 for dir in "${directories[@]}"; do
   cd "$dir" # Change to the directory
 
-  # Create the parent directories for the plan output file
-  mkdir -p "../plan-outputs/$(dirname "$dir")"
-
-  # Initialize Terraform in the current directory
+  # Initialise Terraform in the current directory
   echo "Planning $dir"
   terraform init
 
@@ -26,6 +23,9 @@ for dir in "${directories[@]}"; do
   output_path="../plan-outputs/$file_name.tfplan"
   echo "Writing plan file $output_path"
   terraform plan -out "$output_path"
+
+  echo "ls plan outputs"
+  ls "../plan-outputs/"
 
   # Change back to the previous directory
   cd "$original_dir"
