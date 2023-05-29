@@ -7,8 +7,8 @@ source "./pipeline-scripts/aws-stack/sanitise_directory_name.sh"
 IFS=' '
 
 # Debug
-echo "ls ."
-ls ./plan-outputs
+echo "ls ./plan-outputs/"
+ls ./plan-outputs/
 
 
 # Split the space-separated string into an array
