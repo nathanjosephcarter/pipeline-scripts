@@ -30,6 +30,7 @@ for dir in "${directories[@]}"; do
     most_recent_comment_id=$(echo "$sorted_comment_ids" | head -n 1)
 
     # Iterate over the sorted comment IDs
+    IFS=$'\n'
     for comment_id in ${sorted_comment_ids[@]}; do
       echo "Comment ID:"
       echo $comment_id
