@@ -1,4 +1,4 @@
-# When Github allows for PR comments to be deleted this could possible be used
+# When Github allows for PR comments to be deleted this could possibly be used
 
 
 #!/bin/bash
