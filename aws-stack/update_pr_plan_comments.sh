@@ -34,7 +34,7 @@ for dir in "${directories[@]}"; do
       # Skip the most recent comment ID
       if [[ $id != $most_recent_comment_id ]]; then
         # Delete the previous comment
-        delete_pr_comment -r "aws-stack" -c $id
+        delete_pr_comment -r "aws-stack" -c "$id"
         echo "Deleted previous plan output comment with ID $id for $dir"
       fi
     done
@@ -44,7 +44,7 @@ for dir in "${directories[@]}"; do
       previous_plan_output=$(gh pr view $EVENT_NUMBER --json "comments,body" -q ".comments[] | select(.id == \"$most_recent_comment_id\") | .body" | sed 's/^Terraform Plan Output - $dir\n//')
       if [[ "$new_plan_output" != "$previous_plan_output" ]]; then
         # Delete the previous comment
-        delete_pr_comment -r "aws-stack" -c $most_recent_comment_id
+        delete_pr_comment -r "aws-stack" -c "$most_recent_comment_id"
         echo "Deleted previous plan output comment for $dir"
         # Add a new comment with the new plan output
         gh pr comment $EVENT_NUMBER --body "$(echo -e "Terraform Plan Output - $dir\n$new_plan_output")"
