@@ -3,20 +3,18 @@
 # Source the sanitise directory name file
 source "./pipeline-scripts/aws-stack/sanitise_directory_name.sh"
 
+# Create the plan_outputs directory (if it doesn't exist)
+mkdir -p plan-outputs
+
 echo "ls ."
 ls .
 echo "ls .."
 ls ..
 
-# Create the plan_outputs directory (if it doesn't exist)
-mkdir -p plan-outputs
-
 read -r -a directories <<< "$DIRECTORIES"
 
 # Store the current working directory
 original_dir=$PWD
-
-# mkdir -p "../plan-outputs"
 
 # Iterate over each directory in the DIRECTORIES variable
 for dir in "${directories[@]}"; do
