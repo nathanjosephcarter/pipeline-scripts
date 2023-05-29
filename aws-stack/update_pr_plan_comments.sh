@@ -30,12 +30,14 @@ for dir in "${directories[@]}"; do
     most_recent_comment_id=$(echo "$sorted_comment_ids" | head -n 1)
 
     # Iterate over the sorted comment IDs
-    for id in ${sorted_comment_ids[@]}; do
+    for comment_id in ${sorted_comment_ids[@]}; do
+      echo "Comment ID:"
+      echo $comment_id
       # Skip the most recent comment ID
-      if [[ $id != $most_recent_comment_id ]]; then
+      if [[ $comment_id != $most_recent_comment_id ]]; then
         # Delete the previous comment
-        delete_pr_comment -r "aws-stack" -c "$id"
-        echo "Deleted previous plan output comment with ID $id for $dir"
+        delete_pr_comment -r "aws-stack" -c "$comment_id"
+        echo "Deleted previous plan output comment with ID $comment_id for $dir"
       fi
     done
 
