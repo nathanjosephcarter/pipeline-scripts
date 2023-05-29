@@ -16,7 +16,7 @@ for dir in "${directories[@]}"; do
   # Get the new plan output
   file_name=$(sanitise_directory_name -d "$dir")
   output_path="./plan-outputs/$file_name.tfplan"
-  new_plan_output=$(cat "$output_path")
+  new_plan_output=$(< "$output_path" tr -d '\000')
 
   # Get the previous comment ID for the directory (if exists)
   comment_ids=$(gh pr view $EVENT_NUMBER --json "comments,body,id" -q ".comments[] | select(.body | startswith(\"Terraform Plan Output - $dir\")) | .id")
