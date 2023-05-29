@@ -25,6 +25,8 @@ for dir in "${directories[@]}"; do
   if [[ -n "$comment_ids" ]]; then
     # Sort the comment IDs in reverse order to keep the most recent one
     sorted_comment_ids=$(echo "$comment_ids" | sort -r)
+    echo "Sorted Comment IDs:"
+    echo $sorted_comment_ids
 
     # Get the most recent comment ID
     most_recent_comment_id=$(echo "$sorted_comment_ids" | head -n 1)
