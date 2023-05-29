@@ -8,10 +8,7 @@ IFS=' '
 
 # Debug
 echo "ls ."
-ls .
-
-echo "ls .."
-ls ..
+ls ./plan_outputs/
 
 
 # Split the space-separated string into an array
